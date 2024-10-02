@@ -177,7 +177,6 @@ int	ft_handle_move_trend(int dx, int dy, t_game *game)
 		return (0);
 	
 	game->move_count++;
-	ft_printf("%d\n", game->move_count);
 	
 	//2. Check win case
 	if (next == 'E' && game->total_collectables == 0) {

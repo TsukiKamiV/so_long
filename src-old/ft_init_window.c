@@ -9,7 +9,8 @@ int	my_mlx_hook_callback(int keycode, t_game *game)
 	//printf("%d", keycode);
 	
 	//TODO: free memories, clean up etc etc
-	
+	(void)keycode;
+	(void)game;
 	exit(0);
 }
 
