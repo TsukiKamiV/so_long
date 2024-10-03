@@ -1,9 +1,17 @@
-#include "../includes/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit_game.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 18:42:56 by luxu              #+#    #+#             */
+/*   Updated: 2024/10/02 18:45:37 by luxu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*void	ft_error_exit(t_game game, char *map)
-{
-	
-}*/
+#include "../includes/so_long.h"
+//void	ft_error_exit(t_game game, char *map)
 
 int	close_window(t_game *game)
 {
@@ -15,7 +23,7 @@ int	close_window(t_game *game)
 void	ft_free_map(t_game *game)
 {
 	int	line;
-	
+
 	line = 0;
 	while (line < game->map.rows)
 		free(game->map.full[line++]);
