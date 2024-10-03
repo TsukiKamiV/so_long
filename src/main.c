@@ -1,16 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 23:09:09 by luxu              #+#    #+#             */
+/*   Updated: 2024/10/03 13:42:37 by luxu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 int	main(int argc, char *argv[])
 {
 	t_game	*game;
-	
+
 	//game->exit
-	
 	if (!ft_verify_arg(argc, argv))
 		exit (EXIT_FAILURE);
-	
 	game = malloc(sizeof(t_game));
-	//game->move_count = 0;
 	game->mlx_ptr = mlx_init();
 	ft_init_map(argv[1], &game->map);
 	ft_check_map(game);
@@ -26,7 +35,7 @@ int	main(int argc, char *argv[])
 int	ft_verify_arg(int argc, char *argv[])
 {
 	size_t	argv_len;
-	
+
 	if (argc > 2)
 	{
 		ft_printf("Error\nToo many arguments\n");
@@ -45,21 +54,3 @@ int	ft_verify_arg(int argc, char *argv[])
 	}
 	return (1);
 }
-/*
-void	print_map(char ** tab) {
-	char	**map_current;
-	t_position	grid_pos;
-	t_position	pixel_pos;
-	int			delta_y;
-	t_image		*img_current;
-	
-	grid_pos.y = 0;
-	map_current = tab;
-	printf("\n");
-	while (map_current[grid_pos.y])
-	{
-		printf("%s\n", map_current[grid_pos.y]);
-		grid_pos.y++;
-	}
-	printf("\n\n");
-}*/

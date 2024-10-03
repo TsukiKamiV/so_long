@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 18:46:02 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/02 18:57:40 by luxu             ###   ########.fr       */
+/*   Created: 2024/10/02 19:10:35 by luxu              #+#    #+#             */
+/*   Updated: 2024/10/02 19:13:27 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_init_map(char *map, t_map *map_struct)
 int	ft_find_collectables(t_game *game)
 {
 	char	**map;
-	int	line;
-	int	i;
-	
+	int		line;
+	int		i;
+
 	line = 0;
 	game->total_collectables = 0;
 	map = game->map.full;
@@ -70,31 +70,7 @@ void	ft_map_error_exit(int fd)
 {
 	if (fd == -1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error Loading Map\n");
 		exit (EXIT_FAILURE);
 	}
 }
-/*
-void	ft_find_person(t_game *game)
-{
-	char	**map;
-	int	line;
-	int	i;
-	
-	line = 0;
-	map = game->map.full;
-	while (map[line])
-	{
-		i = 0;
-		while (map[line][i])
-		{
-			if (map[line][i] == 'P')
-			{
-				game->person_pos.x = i;
-				game->person_pos.y = line;
-			}
-			i++;
-		}
-		line++;
-	}
-}*/
