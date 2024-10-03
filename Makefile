@@ -8,14 +8,18 @@ OBJ_DIR = obj/
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I$(INC)
-MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+//MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -Lmlx -lmlx -lX11 -lXext -lm
 RM = rm -f
 
 SOLONG_DIR = $(SRC_DIR)main.c\
 				$(SRC_DIR)ft_verify_map.c\
 				$(SRC_DIR)ft_init_window.c\
+				$(SRC_DIR)ft_verify_path.c\
+				$(SRC_DIR)ft_verify_path_utils.c\
 				$(SRC_DIR)ft_init_map.c\
 				$(SRC_DIR)ft_put_floor.c\
+				$(SRC_DIR)ft_init_images.c\
 				$(SRC_DIR)ft_render_map.c\
 				$(SRC_DIR)ft_manage_event.c\
 				$(SRC_DIR)ft_exit_game.c
@@ -34,7 +38,7 @@ $(MLX):
 all:	$(NAME)
 
 $(NAME):	$(OBJ) $(LIBFT) $(MLX)
-			  @$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+			  @$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(@D)
