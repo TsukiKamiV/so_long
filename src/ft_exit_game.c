@@ -20,14 +20,14 @@ int	close_window(t_game *game)
 	exit(0);
 }
 
-void	ft_free_map(t_game *game)
+void	ft_free_map(t_map *map)
 {
 	int	line;
 
 	line = 0;
-	while (line < game->map.rows)
-		free(game->map.full[line++]);
-	free(game->map.full);
+	while (line < map->rows)
+		free(map->full[line++]);
+	free(map->full);
 }
 
 void	ft_free_all_allocated_memory(t_game *game)

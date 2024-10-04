@@ -196,7 +196,7 @@ int		ft_check_wall(char **tab, int columns, int rows);
 
 int		ft_check_map_form(char **tab, int *columns, int *rows);
 
-void	ft_free_map(t_game *game);
+void	ft_free_map(t_map *map);
 
 void	ft_destroy_images(t_game *game);
 

@@ -25,21 +25,25 @@ void	ft_check_map(t_map *map)
 	if (!ft_check_map_form(map->full, &map->columns, &map->rows))
 	{
 		ft_printf("Error\nMap is not rectangular! Exiting game.\n");
+		ft_free_map(map);
 		exit (EXIT_FAILURE);
 	}
 	if (!ft_check_wall(map->full, map->columns, map->rows))
 	{
 		ft_printf("Error\nMap is not surrounded by wall.\n");
+		ft_free_map(map);
 		exit (EXIT_FAILURE);
 	}
 	if (ft_check_item(*map) != 1)
 	{
 		ft_printf("Error\nInvalid elements, exiting game.\n");
+		ft_free_map(map);
 		exit (EXIT_FAILURE);
 	}
 	if (!ft_verify_path(map->full))
 	{
 		ft_printf("Error\nCan't find valid path in this map, exiting game.\n");
+		ft_free_map(map);
 		exit (EXIT_FAILURE);
 	}
 }
