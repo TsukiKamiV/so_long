@@ -27,3 +27,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(dest, s2, len1 + len2 + 1);
 	return (dest);
 }
+
+void	ft_strexpand(char **origin, char const *s2)
+{
+	char	*holder;
+	
+	holder = *origin;
+	*origin = ft_strjoin(holder, s2);
+	free (holder);
+}

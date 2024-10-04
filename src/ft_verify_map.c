@@ -12,6 +12,9 @@
 
 #include "../includes/so_long.h"
 
+void	ft_check_item_annex(char **tab, int width, int height,\
+							t_map_validator *map_validator);
+
 int	ft_check_map_form(char **tab, int *columns, int *rows)
 {
 	int	len;
@@ -36,35 +39,30 @@ int	ft_check_map_form(char **tab, int *columns, int *rows)
 	return (1);
 }
 
-int	ft_check_item(t_game *game)
+int	ft_check_item(t_map map)
 {
-	t_position		size;
-	char			**tab;
+	char **tab;
 	t_map_validator	map_validator;
 
-	tab = game->map.full;
-	size.y = (int)ft_strlen(tab[0]);
-	size.x = 0;
-	while (tab[size.x])
-		size.x++;
+	tab = map.full;
 	map_validator = (t_map_validator){0, 0, 0, 0};
-	ft_check_item_annex(tab, size, &map_validator);
+	ft_check_item_annex(tab, map.columns, map.rows, &map_validator);
 	return (map_validator.p_count == 1 && map_validator.invalid_count == 0 && \
 			map_validator.e_count == 1 && map_validator.c_count >= 1);
 }
 
-void	ft_check_item_annex(char **tab, t_position size, \
-		t_map_validator *map_validator)
+void	ft_check_item_annex(char **tab, int width, int height, \
+							t_map_validator *map_validator)
 {
 	int		i;
 	int		j;
 	char	c;
 
 	i = 0;
-	while (i < size.x - 1)
+	while (i < height)
 	{
 		j = 0;
-		while (j < size.y - 1)
+		while (j < width)
 		{
 			c = tab[i][j];
 			if (c != 'E' && c != 'P' && c != 'C' && c != '0' && c != '1')

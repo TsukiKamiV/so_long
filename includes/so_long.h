@@ -17,6 +17,9 @@
 // Check for macOS
 #if defined(__APPLE__) && defined(__MACH__)
 # include "../../mlx/mlx.h"
+#ifdef DEBUG
+#define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
+#endif
 enum{
 	KEYCODE_ARROW_UP = 126,
 	KEYCODE_ARROW_DOWN = 125,
@@ -137,23 +140,25 @@ typedef struct s_game
 
 int		main(int argc, char *argv[]);
 
+t_map	ft_init_map(char *map_path);
+
+void	ft_check_map(t_map *map);
+
+int		ft_check_item(t_map map);
+
+int	ft_find_collectables(char **tab, t_position *person_pos);
+
 int		ft_verify_arg(int argc, char *argv[]);
 
 void	ft_init_window(t_game *game);
 
-void	ft_check_map(t_game *game);
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
-void	ft_init_img(t_game game);
 
 void	ft_load_image(t_game *game, t_image *img, char *path);
 
 void	ft_init_floor(t_game *game);
 
 void	ft_put_floor(t_game game);
-
-void	ft_init_map(char *map, t_map *map_struct);
 
 void	ft_map_error_exit(int fd);
 
@@ -179,8 +184,6 @@ int		ft_loop_hook(t_game *game);
 
 void	ft_manage_event(t_game *game);
 
-int		ft_find_collectables(t_game *game);
-
 void	fill(char **tab, t_position size, t_position cur);
 
 void	flood_fill(char **tab, t_position size, t_position begin);
@@ -190,11 +193,6 @@ int		ft_verify_path(char **tab);
 void	find_p(char **tab_copy, t_position size, t_position *begin);
 
 int		ft_check_wall(char **tab, int columns, int rows);
-
-int		ft_check_item(t_game *game);
-
-void	ft_check_item_annex(char **tab, \
-		t_position size, t_map_validator *map_validator);
 
 int		ft_check_map_form(char **tab, int *columns, int *rows);
 
@@ -216,15 +214,37 @@ int		my_mlx_hook_callback(int keycode, t_game *game);
 
 //# define WIN_WIDTH	game.map.columns * 16
 //# define WIN_HEIGHT	game.map.rows * 16
-# define CARROTS_PATH "assets/sprites/carrot.xpm"
-# define WALL_PATH	"assets/sprites/wall_tmp.xpm"
-# define PERSON_PATH "assets/sprites/person_front.xpm"
-# define EXIT_PATH "assets/sprites/exit.xpm"
-# define START_PATH "assets/sprites/start.xpm"
-# define PERSON_FRONT_PATH "assets/sprites/person_front.xpm"
-# define PERSON_BACK_PATH "assets/sprites/person_back.xpm"
-# define PERSON_LEFT_PATH "assets/sprites/person_left.xpm"
-# define PERSON_RIGHT_PATH "assets/sprites/person_right.xpm"
-# define FLOOR_TILE_PATH "assets/sprites/floor.xpm"
+# define _CARROTS_PATH "assets/sprites/carrot.xpm"
+# define _WALL_PATH	"assets/sprites/wall_tmp.xpm"
+# define _PERSON_PATH "assets/sprites/person_front.xpm"
+# define _EXIT_PATH "assets/sprites/exit.xpm"
+# define _START_PATH "assets/sprites/start.xpm"
+# define _PERSON_FRONT_PATH "assets/sprites/person_front.xpm"
+# define _PERSON_BACK_PATH "assets/sprites/person_back.xpm"
+# define _PERSON_LEFT_PATH "assets/sprites/person_left.xpm"
+# define _PERSON_RIGHT_PATH "assets/sprites/person_right.xpm"
+# define _FLOOR_TILE_PATH "assets/sprites/floor.xpm"
+
+
+#ifndef PATH_PREFIX
+#define PATH_PREFIX ""
+#endif
+
+#define CONCAT(a, b) a b
+
+// Create the final macro PREFIXSUFFIX using the CONCAT macro
+
+# define CARROTS_PATH CONCAT(PATH_PREFIX, _CARROTS_PATH)
+# define WALL_PATH CONCAT(PATH_PREFIX, _WALL_PATH)
+# define PERSON_PATH CONCAT(PATH_PREFIX, _PERSON_PATH)
+# define EXIT_PATH CONCAT(PATH_PREFIX, _EXIT_PATH)
+# define START_PATH CONCAT(PATH_PREFIX, _START_PATH)
+# define PERSON_FRONT_PATH CONCAT(PATH_PREFIX, _PERSON_FRONT_PATH)
+# define PERSON_BACK_PATH CONCAT(PATH_PREFIX, _PERSON_BACK_PATH)
+# define PERSON_LEFT_PATH CONCAT(PATH_PREFIX, _PERSON_LEFT_PATH)
+# define PERSON_RIGHT_PATH CONCAT(PATH_PREFIX, _PERSON_RIGHT_PATH)
+# define FLOOR_TILE_PATH CONCAT(PATH_PREFIX, _FLOOR_TILE_PATH)
+
+
 # define draw_img(mlx_ptr, win_ptr, img_ptr, x, y) mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, x, y)
 #endif
