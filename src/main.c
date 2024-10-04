@@ -26,15 +26,16 @@ int	main(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	 
 	game.map = ft_init_map(argv[1]);
-	
+	ft_check_map(&game.map);
+	game.total_collectables = ft_find_collectables(game.map.full, &game.person_pos);
+	game.move_count = 0;
 	
 	/********************
 	 分割线， 假设上面的代码， 没有memory leak的问题
 	 ********************
 	 */
-	ft_check_map(&game.map);//没有leak但有still reachable allocated memory
-	game.total_collectables = ft_find_collectables(game.map.full, &game.person_pos);
-	game.move_count = 0;
+	
+	
 	
 	/********************
 	 分割线， 上面的代码， 是工作（重构）中
