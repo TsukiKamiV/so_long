@@ -6,14 +6,14 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:17:10 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/03 21:51:19 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/04 16:23:38 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_check_item_annex(char **tab, int width, int height,\
-							t_map_validator *map_validator);
+void	ft_check_item_annex(char **tab, int width, int height, \
+		t_map_validator *map_validator);
 
 int	ft_check_map_form(char **tab, int *columns, int *rows)
 {
@@ -41,7 +41,7 @@ int	ft_check_map_form(char **tab, int *columns, int *rows)
 
 int	ft_check_item(t_map map)
 {
-	char **tab;
+	char			**tab;
 	t_map_validator	map_validator;
 
 	tab = map.full;
@@ -86,6 +86,7 @@ void	ft_empty_line(char *map)
 	if (map[0] == '\n')
 	{
 		ft_printf("Error\nEmpty line in map, exiting game.\n");
+		free (map);
 		exit (EXIT_FAILURE);
 	}
 	i = 0;
@@ -94,6 +95,7 @@ void	ft_empty_line(char *map)
 		if (map[i] == '\n' && map[i + 1] == '\n')
 		{
 			ft_printf("Error\nEmpty line in map, exiting game.\n");
+			free (map);
 			exit (EXIT_FAILURE);
 		}
 		i++;
