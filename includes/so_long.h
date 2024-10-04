@@ -13,7 +13,42 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+
+// Check for macOS
+#if defined(__APPLE__) && defined(__MACH__)
+# include "../../mlx/mlx.h"
+enum{
+	KEYCODE_ARROW_UP = 126,
+	KEYCODE_ARROW_DOWN = 125,
+	KEYCODE_ARROW_LEFT = 123,
+	KEYCODE_ARROW_RIGHT = 124,
+	KEYCODE_WASD_UP = 13,
+	KEYCODE_WASD_DOWN = 0,
+	KEYCODE_WASD_LEFT = 1,
+	KEYCODE_WASD_RIGHT = 2
+};
+
+// Check for Linux
+#elif defined(__linux__)
 # include "../mlx/mlx.h"
+enum
+{
+	KEYCODE_ARROW_UP = 65362,
+	KEYCODE_ARROW_DOWN = 65364,
+	KEYCODE_ARROW_LEFT = 65361,
+	KEYCODE_ARROW_RIGHT = 65363,
+	KEYCODE_WASD_UP = 119,
+	KEYCODE_WASD_DOWN = 115,
+	KEYCODE_WASD_LEFT = 97,
+	KEYCODE_WASD_RIGHT = 100
+};
+
+
+// Other OS checks (you can add more as needed)
+#else
+#error "Unsupported operating system"
+#endif
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -78,17 +113,6 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-enum
-{
-	KEYCODE_ARROW_UP = 65362,
-	KEYCODE_ARROW_DOWN = 65364,
-	KEYCODE_ARROW_LEFT = 65361,
-	KEYCODE_ARROW_RIGHT = 65363,
-	KEYCODE_WASD_UP = 119,
-	KEYCODE_WASD_DOWN = 115,
-	KEYCODE_WASD_LEFT = 97,
-	KEYCODE_WASD_RIGHT = 100
-};
 
 typedef struct s_game
 {
