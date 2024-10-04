@@ -33,7 +33,7 @@ void	ft_free_map(t_map *map)
 void	ft_free_all_allocated_memory(t_game *game)
 {
 	ft_destroy_images(game);
-	ft_free_map(game);
+	ft_free_map(&game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free(game->mlx_ptr);
 	//free(game);
