@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:10:35 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/02 19:13:27 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/04 14:09:37 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_map	ft_init_map(char *map_path)
 	free (map_tmp);
 	return (ret);
 }
-
 
 int	ft_find_collectables(char **tab, t_position *person_pos)
 {

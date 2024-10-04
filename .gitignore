@@ -2,3 +2,4 @@
 obj
 so_long
 *.o
+libft/libft.a

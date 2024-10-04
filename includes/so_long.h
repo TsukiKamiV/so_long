@@ -6,16 +6,15 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 17:51:00 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/03 21:51:55 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/04 15:06:48 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-
 // Check for macOS
-#if defined(__APPLE__) && defined(__MACH__)
+#if defined(__APPLE__)
 # include "../../mlx/mlx.h"
 #ifdef DEBUG
 #define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
@@ -46,7 +45,6 @@ enum
 	KEYCODE_WASD_RIGHT = 100
 };
 
-
 // Other OS checks (you can add more as needed)
 #else
 #error "Unsupported operating system"
@@ -59,7 +57,6 @@ enum
 # include <fcntl.h>
 # include <stdint.h>
 # include "../libft/libft.h"
-//# include "../libs/ft_printf/ft_printf.h"
 
 # define PERSON_DY	-5
 
@@ -215,7 +212,7 @@ int		my_mlx_hook_callback(int keycode, t_game *game);
 //# define WIN_WIDTH	game.map.columns * 16
 //# define WIN_HEIGHT	game.map.rows * 16
 # define _CARROTS_PATH "assets/sprites/carrot.xpm"
-# define _WALL_PATH	"assets/sprites/wall_tmp.xpm"
+# define _WALL_PATH "assets/sprites/wall_tmp.xpm"
 # define _PERSON_PATH "assets/sprites/person_front.xpm"
 # define _EXIT_PATH "assets/sprites/exit.xpm"
 # define _START_PATH "assets/sprites/start.xpm"
