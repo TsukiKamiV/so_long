@@ -14,8 +14,18 @@
 
 void	ft_load_image(t_game *game, t_image *img, char *path)
 {
+	char *final_path;
+	
+# if defined(__APPLE__) && DEBUG
+#	if defined(PATH_PREFIX)
+	final_path = ft_strjoin(PATH_PREFIX, path);
+#	else
+#	endif
+#else
+	final_path = path;
+#endif
 	img->xpm_ptr = mlx_xpm_file_to_image(game->mlx_ptr, \
-			path, &img->size.width, &img->size.height);
+										 final_path, &img->size.width, &img->size.height);
 }
 
 void	ft_init_images(t_game *game)

@@ -14,7 +14,8 @@
 
 void	ft_init_floor(t_game *game)
 {
-	game->floor.xpm_ptr = mlx_xpm_file_to_image(game->mlx_ptr, \
+	ft_load_image(game, &game->floor, FLOOR_TILE_PATH);
+	//game->floor.xpm_ptr = mlx_xpm_file_to_image(game->mlx_ptr, \
 			FLOOR_TILE_PATH, &game->floor.size.width, &game->floor.size.height);
 	if (!game->floor.xpm_ptr)
 	{

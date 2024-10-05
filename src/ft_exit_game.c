@@ -12,13 +12,19 @@
 
 #include "../includes/so_long.h"
 
+void destroy_display(void *mlx_ptr) {
+# if defined(__linux__)
+	mlx_destroy_display(mlx_ptr);
+# endif
+}
+
 int	ft_close_game(t_game *game, int state)
 {
 	if (state == 1)
 	{
 		ft_free_map(&game->map);
 		if (game->mlx_ptr)
-			mlx_destroy_display(game->mlx_ptr);
+			destroy_display(game->mlx_ptr);
 		free (game->mlx_ptr);
 	}
 	if (state == 2)
@@ -27,7 +33,7 @@ int	ft_close_game(t_game *game, int state)
 		ft_destroy_images(game);
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		if (game->mlx_ptr)
-			mlx_destroy_display(game->mlx_ptr);
+			destroy_display(game->mlx_ptr);
 		free (game->mlx_ptr);
 	}
 	exit (0);

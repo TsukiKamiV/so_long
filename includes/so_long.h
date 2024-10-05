@@ -20,30 +20,16 @@
 # include <fcntl.h>
 # include <stdint.h>
 # include "../libft/libft.h"
-
-// Check for macOS
-# if defined(__APPLE__)
-#  include "../../mlx/mlx.h"
-#  ifdef DEBUG
-#   define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
-#  endif
-
-enum
-{
-	KEYCODE_ARROW_UP = 126,
-	KEYCODE_ARROW_DOWN = 125,
-	KEYCODE_ARROW_LEFT = 123,
-	KEYCODE_ARROW_RIGHT = 124,
-	KEYCODE_WASD_UP = 13,
-	KEYCODE_WASD_DOWN = 0,
-	KEYCODE_WASD_LEFT = 1,
-	KEYCODE_WASD_RIGHT = 2
-};
-
-// Check for Linux
-# elif defined(__linux__)
+# if defined(__linux__)
 #  include "../mlx/mlx.h"
+# elif defined(__APPLE__) // Check for macOS
+#  include "../../mlx/mlx.h"
+# else
+#  error "Unsupported operating system"
+# endif
 
+
+# if defined(__linux__)
 enum
 {
 	KEYCODE_ARROW_UP = 65362,
@@ -55,11 +41,30 @@ enum
 	KEYCODE_WASD_LEFT = 97,
 	KEYCODE_WASD_RIGHT = 100
 };
+# elif defined(__APPLE__) // Check for macOS
+enum
+{
+	KEYCODE_ARROW_UP = 126,
+	KEYCODE_ARROW_DOWN = 125,
+	KEYCODE_ARROW_LEFT = 123,
+	KEYCODE_ARROW_RIGHT = 124,
+	KEYCODE_WASD_UP = 13,
+	KEYCODE_WASD_DOWN = 0,
+	KEYCODE_WASD_LEFT = 1,
+	KEYCODE_WASD_RIGHT = 2
+};
+#  if DEBUG
+#    define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
+#  endif
+#endif
+
+
+
+
+
+
 
 // Other OS checks (you can add more as needed)
-# else
-#  error "Unsupported operating system"
-# endif
 
 # define PERSON_DY	-5
 
@@ -215,35 +220,16 @@ int		my_mlx_hook_callback(int keycode, t_game *game);
 
 //# define WIN_WIDTH	game.map.columns * 16
 //# define WIN_HEIGHT	game.map.rows * 16
-# define _CARROTS_PATH "assets/sprites/carrot.xpm"
-# define _WALL_PATH "assets/sprites/wall_tmp.xpm"
-# define _PERSON_PATH "assets/sprites/person_front.xpm"
-# define _EXIT_PATH "assets/sprites/exit.xpm"
-# define _START_PATH "assets/sprites/start.xpm"
-# define _PERSON_FRONT_PATH "assets/sprites/person_front.xpm"
-# define _PERSON_BACK_PATH "assets/sprites/person_back.xpm"
-# define _PERSON_LEFT_PATH "assets/sprites/person_left.xpm"
-# define _PERSON_RIGHT_PATH "assets/sprites/person_right.xpm"
-# define _FLOOR_TILE_PATH "assets/sprites/floor.xpm"
-
-# ifndef PATH_PREFIX
-#  define PATH_PREFIX ""
-# endif
-
-# define CONCAT(a, b) a b
-
-// Create the final macro PREFIXSUFFIX using the CONCAT macro
-
-# define CARROTS_PATH CONCAT(PATH_PREFIX, _CARROTS_PATH)
-# define WALL_PATH CONCAT(PATH_PREFIX, _WALL_PATH)
-# define PERSON_PATH CONCAT(PATH_PREFIX, _PERSON_PATH)
-# define EXIT_PATH CONCAT(PATH_PREFIX, _EXIT_PATH)
-# define START_PATH CONCAT(PATH_PREFIX, _START_PATH)
-# define PERSON_FRONT_PATH CONCAT(PATH_PREFIX, _PERSON_FRONT_PATH)
-# define PERSON_BACK_PATH CONCAT(PATH_PREFIX, _PERSON_BACK_PATH)
-# define PERSON_LEFT_PATH CONCAT(PATH_PREFIX, _PERSON_LEFT_PATH)
-# define PERSON_RIGHT_PATH CONCAT(PATH_PREFIX, _PERSON_RIGHT_PATH)
-# define FLOOR_TILE_PATH CONCAT(PATH_PREFIX, _FLOOR_TILE_PATH)
+# define CARROTS_PATH "assets/sprites/carrot.xpm"
+# define WALL_PATH "assets/sprites/wall_tmp.xpm"
+# define PERSON_PATH "assets/sprites/person_front.xpm"
+# define EXIT_PATH "assets/sprites/exit.xpm"
+# define START_PATH "assets/sprites/start.xpm"
+# define PERSON_FRONT_PATH "assets/sprites/person_front.xpm"
+# define PERSON_BACK_PATH "assets/sprites/person_back.xpm"
+# define PERSON_LEFT_PATH "assets/sprites/person_left.xpm"
+# define PERSON_RIGHT_PATH "assets/sprites/person_right.xpm"
+# define FLOOR_TILE_PATH "assets/sprites/floor.xpm"
 
 # define draw_img(mlx_ptr, win_ptr, img_ptr, x, y) mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, x, y)
 #endif
