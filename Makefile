@@ -22,7 +22,8 @@ SOLONG_DIR = $(SRC_DIR)main.c\
 				$(SRC_DIR)ft_init_images.c\
 				$(SRC_DIR)ft_render_map.c\
 				$(SRC_DIR)ft_manage_event.c\
-				$(SRC_DIR)ft_exit_game.c
+				$(SRC_DIR)ft_exit_game.c\
+				$(SRC_DIR)ft_destroy.c
 
 SRCS = $(SOLONG_DIR)
 OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))

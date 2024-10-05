@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 17:51:00 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/04 21:29:58 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/05 14:17:17 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 #  error "Unsupported operating system"
 # endif
 
-
 # if defined(__linux__)
+
 enum
 {
 	KEYCODE_ARROW_UP = 65362,
@@ -41,7 +41,9 @@ enum
 	KEYCODE_WASD_LEFT = 97,
 	KEYCODE_WASD_RIGHT = 100
 };
+
 # elif defined(__APPLE__) // Check for macOS
+
 enum
 {
 	KEYCODE_ARROW_UP = 126,
@@ -53,16 +55,14 @@ enum
 	KEYCODE_WASD_LEFT = 1,
 	KEYCODE_WASD_RIGHT = 2
 };
+
 #  if DEBUG
-#    define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
+
+#   define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
+
 #  endif
-#endif
 
-
-
-
-
-
+# endif
 
 // Other OS checks (you can add more as needed)
 
@@ -218,6 +218,10 @@ void	print_map(char **tab);
 
 int		my_mlx_hook_callback(int keycode, t_game *game);
 
+void	destroy_display(void *mlx_ptr);
+
+void	draw_img(void *mlx_ptr, void *win_ptr, void *img_ptr, t_position pos);
+
 //# define WIN_WIDTH	game.map.columns * 16
 //# define WIN_HEIGHT	game.map.rows * 16
 # define CARROTS_PATH "assets/sprites/carrot.xpm"
@@ -231,5 +235,4 @@ int		my_mlx_hook_callback(int keycode, t_game *game);
 # define PERSON_RIGHT_PATH "assets/sprites/person_right.xpm"
 # define FLOOR_TILE_PATH "assets/sprites/floor.xpm"
 
-# define draw_img(mlx_ptr, win_ptr, img_ptr, x, y) mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, x, y)
 #endif

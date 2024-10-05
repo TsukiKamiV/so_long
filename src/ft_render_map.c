@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:30:51 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/02 23:03:53 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/05 14:21:20 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_render_pos(t_game *game, char c, t_position grid)
 		img = ft_facing(game, c, &dy);
 	pixel.y = (grid.y * (16 + 1)) + ((16 - img->size.height) / 2) + dy;
 	pixel.x = (grid.x * (16 + 1)) + ((16 - img->size.width) / 2);
-	draw_img(game->mlx_ptr, game->win_ptr, img->xpm_ptr, pixel.x, pixel.y);
+	draw_img(game->mlx_ptr, game->win_ptr, img->xpm_ptr, pixel);
 }
 
 void	ft_render_map(t_game *game, char **map)

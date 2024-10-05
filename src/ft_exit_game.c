@@ -6,17 +6,11 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 18:42:56 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/04 21:32:05 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/05 14:07:04 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void destroy_display(void *mlx_ptr) {
-# if defined(__linux__)
-	mlx_destroy_display(mlx_ptr);
-# endif
-}
 
 int	ft_close_game(t_game *game, int state)
 {

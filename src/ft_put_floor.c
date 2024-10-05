@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:23:24 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/02 23:08:43 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/05 13:50:44 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	ft_init_floor(t_game *game)
 {
 	ft_load_image(game, &game->floor, FLOOR_TILE_PATH);
-	//game->floor.xpm_ptr = mlx_xpm_file_to_image(game->mlx_ptr, \
-			FLOOR_TILE_PATH, &game->floor.size.width, &game->floor.size.height);
 	if (!game->floor.xpm_ptr)
 	{
 		ft_printf("Error\nFaild to load the floor, stopping game.\n");

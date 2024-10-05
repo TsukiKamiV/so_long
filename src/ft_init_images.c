@@ -6,27 +6,33 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:37:01 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/03 13:43:17 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/05 14:22:56 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+#if defined(PATH_PREFIX)
+
 void	ft_load_image(t_game *game, t_image *img, char *path)
 {
-	char *final_path;
-	
-# if defined(__APPLE__) && DEBUG
-#	if defined(PATH_PREFIX)
+	char	*final_path;
+
 	final_path = ft_strjoin(PATH_PREFIX, path);
-#	else
-#	endif
-#else
-	final_path = path;
-#endif
 	img->xpm_ptr = mlx_xpm_file_to_image(game->mlx_ptr, \
-										 final_path, &img->size.width, &img->size.height);
+			final_path, &img->size.width, &img->size.height);
+	free (final_path);
 }
+
+#else
+
+void	ft_load_image(t_game *game, t_image *img, char *path)
+{
+	img->xpm_ptr = mlx_xpm_file_to_image(game->mlx_ptr, \
+			path, &img->size.width, &img->size.height);
+}
+
+#endif
 
 void	ft_init_images(t_game *game)
 {

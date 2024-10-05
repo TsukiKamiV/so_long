@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:09:09 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/04 21:31:18 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/05 14:13:52 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ int	ft_verify_arg(int argc, char *argv[])
 		return (0);
 	}
 	return (1);
+}
+
+void	draw_img(void *mlx_ptr, void *win_ptr, void *img_ptr, t_position pos)
+{
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, pos.x, pos.y);
 }
