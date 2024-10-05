@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:16:30 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/03 21:57:21 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/04 21:32:21 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int	ft_key_hook(int keycode, t_game *game)
 	int	dy;
 	int	ret;
 
-	//printf("keycode pressed: %d!\n", keycode);
 	if (keycode == 65307 || keycode == 113)
-		close_window(game);
+		ft_close_game(game, 2);
 	dx = 0;
 	dy = 0;
 	if (keycode == KEYCODE_ARROW_UP || keycode == KEYCODE_WASD_UP)
@@ -77,7 +76,7 @@ int	ft_handle_move_trend(int dx, int dy, t_game *game)
 	if (next == 'E' && game->total_collectables == 0)
 	{
 		ft_printf("YOU WIN!\n");
-		close_window(game);
+		ft_close_game(game, 2);
 	}
 	ft_restore_previous(game->person_pos, game);
 	if (next == 'C')

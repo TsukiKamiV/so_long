@@ -6,20 +6,30 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 17:51:00 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/04 15:06:48 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/04 21:29:58 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <fcntl.h>
+# include <stdint.h>
+# include "../libft/libft.h"
+
 // Check for macOS
-#if defined(__APPLE__)
-# include "../../mlx/mlx.h"
-#ifdef DEBUG
-#define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
-#endif
-enum{
+# if defined(__APPLE__)
+#  include "../../mlx/mlx.h"
+#  ifdef DEBUG
+#   define PATH_PREFIX "/Users/luyao/Projects/so_long_xcodeproj/so_long/"
+#  endif
+
+enum
+{
 	KEYCODE_ARROW_UP = 126,
 	KEYCODE_ARROW_DOWN = 125,
 	KEYCODE_ARROW_LEFT = 123,
@@ -31,8 +41,9 @@ enum{
 };
 
 // Check for Linux
-#elif defined(__linux__)
-# include "../mlx/mlx.h"
+# elif defined(__linux__)
+#  include "../mlx/mlx.h"
+
 enum
 {
 	KEYCODE_ARROW_UP = 65362,
@@ -46,17 +57,9 @@ enum
 };
 
 // Other OS checks (you can add more as needed)
-#else
-#error "Unsupported operating system"
-#endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <fcntl.h>
-# include <stdint.h>
-# include "../libft/libft.h"
+# else
+#  error "Unsupported operating system"
+# endif
 
 # define PERSON_DY	-5
 
@@ -113,7 +116,6 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-
 typedef struct s_game
 {
 	void		*mlx_ptr;
@@ -143,7 +145,7 @@ void	ft_check_map(t_map *map);
 
 int		ft_check_item(t_map map);
 
-int	ft_find_collectables(char **tab, t_position *person_pos);
+int		count_c(char **tab, t_position *person_pos);
 
 int		ft_verify_arg(int argc, char *argv[]);
 
@@ -193,6 +195,8 @@ int		ft_check_wall(char **tab, int columns, int rows);
 
 int		ft_check_map_form(char **tab, int *columns, int *rows);
 
+int		ft_close_game(t_game *game, int state);
+
 void	ft_free_map(t_map *map);
 
 void	ft_destroy_images(t_game *game);
@@ -222,12 +226,11 @@ int		my_mlx_hook_callback(int keycode, t_game *game);
 # define _PERSON_RIGHT_PATH "assets/sprites/person_right.xpm"
 # define _FLOOR_TILE_PATH "assets/sprites/floor.xpm"
 
+# ifndef PATH_PREFIX
+#  define PATH_PREFIX ""
+# endif
 
-#ifndef PATH_PREFIX
-#define PATH_PREFIX ""
-#endif
-
-#define CONCAT(a, b) a b
+# define CONCAT(a, b) a b
 
 // Create the final macro PREFIXSUFFIX using the CONCAT macro
 
@@ -241,7 +244,6 @@ int		my_mlx_hook_callback(int keycode, t_game *game);
 # define PERSON_LEFT_PATH CONCAT(PATH_PREFIX, _PERSON_LEFT_PATH)
 # define PERSON_RIGHT_PATH CONCAT(PATH_PREFIX, _PERSON_RIGHT_PATH)
 # define FLOOR_TILE_PATH CONCAT(PATH_PREFIX, _FLOOR_TILE_PATH)
-
 
 # define draw_img(mlx_ptr, win_ptr, img_ptr, x, y) mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, x, y)
 #endif

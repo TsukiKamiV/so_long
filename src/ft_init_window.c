@@ -6,7 +6,7 @@
 /*   By: luxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:14:34 by luxu              #+#    #+#             */
-/*   Updated: 2024/10/03 21:52:53 by luxu             ###   ########.fr       */
+/*   Updated: 2024/10/04 21:31:51 by luxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	my_mlx_hook_callback(int keycode, t_game *game)
 {
-	//TODO: free memories, clean up etc etc
 	(void)keycode;
 	(void)game;
 	exit(0);
@@ -50,9 +49,11 @@ void	ft_check_map(t_map *map)
 
 void	ft_init_window(t_game *game)
 {
+	ft_init_floor(game);
+	ft_init_images(game);
 	game->win_ptr = mlx_new_window(game->mlx_ptr, game->map.columns * 16 + \
 			((game->map.columns - 1) * 1), game->map.rows * 16 + \
 			((game->map.rows - 1) * 1), "so_long");
-	ft_init_floor(game);
-	ft_init_images(game);
+	if (!game->win_ptr)
+		ft_close_game(game, 2);
 }
